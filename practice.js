@@ -47,3 +47,18 @@ for (const key in coche) {
 }   
 //   document.write("<br>"+coche[index]);
 // test2 
+for (const key in coche) {
+  console.log("yes")
+  document.write(coche[key]);
+
+}   
+//   document.write("<br>"+coche[index]);
+// test2 
+
+for (const key in coche) {
+  console.log("yes")
+  document.write(coche[key]);
+
+}   
+//   document.write("<br>"+coche[index]);
+// test2 
