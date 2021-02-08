@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="unidad6stlye.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Unidad 6</title>
+    
+  </head>
+  <body>
+    <form id="form1">
+      <label>INFORMATION BOOK</label>
+      <br>
+      <label for="titleBook">Title:</label>
+      <input type="text" name="titleBook" id="titleBook" />
+      <br />
+      <label for="authorBook"> Author: </label>
+      <input type="text" name="authorBook" id="authorBook" />
+      <br />
+      <label for="priceBook">Price:</label>
+      <input type="number" min="0" name="priceBook" id="priceBook" />
+      <br>
+      <label for="editorialBook"> Editoriales </label>
+      <select id="editorialBookSelector" name="editorialBook"> 
+        
+      </select>
+      <br>
+      <button onclick="addEdit(event)">Añadir Editorial</button>
+      <input type="text" id="newEdit">
+      <br>
+      <label> Ubicacion</label>
+      <ul id="ulUbications">
+        
+      </ul>
+      <button onclick="addUbication(event)">+</button>
+      <button onclick="deleteUbication(event)">-</button>
+    </form>
+    
+    <script src="unidad6js.js"></script>
+  </body>
+</html>
+`
