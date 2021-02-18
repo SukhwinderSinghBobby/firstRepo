@@ -1,83 +1,82 @@
-let editorialsOptions = [];
+let editorialsOptions = []
 
-let selectorEditorials = document.getElementById("editorialBookSelector");
+let selectorEditorials = document.getElementById('editorialBookSelector')
 
 // add editorials into selector of Editorials
-function addEdit(event) {
-  event.preventDefault();
+function addEdit (event) {
+  event.preventDefault()
 
-  let newEdit = document.getElementById("newEdit").value;
+  let newEdit = document.getElementById('newEdit').value
 
-  var option = document.createElement("option");
-  var att = document.createAttribute("value");
+  var option = document.createElement('option')
+  var att = document.createAttribute('value')
 
-  editorialsOptions.push(newEdit);
+  editorialsOptions.push(newEdit)
 
-  att.value = "='" + newEdit + "'";
+  att.value = "='" + newEdit + "'"
 
-  option.setAttribute("option", newEdit);
+  option.setAttribute('option', newEdit)
 
-  option.innerText = newEdit;
+  option.innerText = newEdit
 
-  selectorEditorials.appendChild(option);
+  selectorEditorials.appendChild(option)
 }
 
 // add ubications of libraries from the city
-let ubicationsLibraries = ["Barcelona", "Madrid", "Murcia", "LLeida"];
-let ubicationsList = document.getElementById("ulUbications");
-let counterClicks = 0;
+let ubicationsLibraries = ['Barcelona', 'Madrid', 'Murcia', 'LLeida']
+let ubicationsList = document.getElementById('ulUbications')
+let counterClicks = 0
+
 let addUbication = function (event) {
-  event.preventDefault();
-  //dont enable to add more libraries than the array has
-  counterClicks++;
-  if (
-    counterClicks > ubicationsLibraries.length &&
-    ubicationsList.childElementCount == ubicationsLibraries.length
-  )
-    alert("no hay mas direciones");
+  event.preventDefault()
+  // dont enable to add more libraries than the array has
+  counterClicks++
+  if (counterClicks > ubicationsLibraries.length && ubicationsList.childElementCount == ubicationsLibraries.length)
+    alert('no hay mas direciones')
   else {
-    let liElement = document.createElement("li");
+    let liElement = document.createElement('li')
+    let nIdsListUbcation = 0
 
-    let nIdsListUbcations = 0;
     if (ubicationsList.hasChildNodes())
-      nIdsListUbcations = ubicationsList.childElementCount;
-    //incrementing ids to avoid id = 0 or same id as lentgh of elements
-    nIdsListUbcations++;
+      nIdsListUbcation = ubicationsList.childElementCount
+    // incrementing ids to avoid id = 0 or same id as lentgh of elements
+    nIdsListUbcation++
 
-    liElement.setAttribute("id", nIdsListUbcations);
+    liElement.setAttribute('id', nIdsListUbcation)
 
-    let nLibraries = Math.floor(Math.random() * ubicationsLibraries.length);
-
-    //avoiding repiting same libraries
-    let repetead = false;
+    let nLibraries = Math.floor(Math.random() * ubicationsLibraries.length)
+    let selectedLibrary = ubicationsLibraries[nLibraries]
+    // avoiding repiting same libraries
+    let repetead = false
     if (ubicationsList.hasChildNodes()) {
-      let listOfAddedLibraries = ubicationsList.children;
-      
-      for (let index = 0; index < listOfAddedLibraries.length; index++   ) {
-        if (
-          listOfAddedLibraries[index].innerText == ubicationsLibraries[nLibraries]) {
-          //listOfAddedLibraries[index].remove();
-          console.log(ubicationsLibraries[nLibraries]);
-         
-          nLibraries = Math.floor(Math.random() * (ubicationsLibraries.length - 0) +0);
-          console.log("nuevoValorRandom" + nLibraries);
-          repetead == true;
-          index=0;
-        }
+      // let listOfAddedLibraries = ubicationsList.children
+
+    
+
+      var listOfAddedLibraries = [...ubicationsList.children]
+
+      // console.log(listOfAddedLibraries[0].innerText)
+      // let index = listOfAddedLibraries.indexOf({ innerText: selectedLibrary })
+
+      while (listOfAddedLibraries.find(library => library.innerText == selectedLibrary) != undefined) {
+        const randomLibraryNumber = Math.floor(Math.random() * ubicationsLibraries.length)
+        selectedLibrary = ubicationsLibraries[randomLibraryNumber]
       }
 
+      console.log('Encontrado: ' + selectedLibrary)
+     
     }
-      liElement.innerText = ubicationsLibraries[nLibraries];
-      ubicationsList.append(liElement);
-    }
+    liElement.innerText = selectedLibrary;
+    ubicationsList.append(liElement)
   }
+}
 
 // delete ubications of libraries from the city
 let deleteUbication = function (event) {
-  event.preventDefault();
+  event.preventDefault()
   if (ubicationsList.childNodes.length > 0) {
-    ubicationsList.lastChild.remove();
-    counterClicks--;
+    ubicationsList.lastChild.remove()
+    counterClicks--
   }
-  else alert("No hi han direccions de libreries!");
-};
+  else alert('No hi han direccions de libreries!')
+}
